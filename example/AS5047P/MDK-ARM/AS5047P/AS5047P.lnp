@@ -1,0 +1,27 @@
+--cpu Cortex-M3
+"as5047p\startup_stm32f103xb.o"
+"as5047p\main.o"
+"as5047p\gpio.o"
+"as5047p\spi.o"
+"as5047p\stm32f1xx_it.o"
+"as5047p\stm32f1xx_hal_msp.o"
+"as5047p\as5047p.o"
+"as5047p\stm32f1xx_hal_gpio_ex.o"
+"as5047p\stm32f1xx_hal_spi.o"
+"as5047p\stm32f1xx_hal_spi_ex.o"
+"as5047p\stm32f1xx_hal_tim.o"
+"as5047p\stm32f1xx_hal_tim_ex.o"
+"as5047p\stm32f1xx_hal.o"
+"as5047p\stm32f1xx_hal_rcc.o"
+"as5047p\stm32f1xx_hal_rcc_ex.o"
+"as5047p\stm32f1xx_hal_gpio.o"
+"as5047p\stm32f1xx_hal_dma.o"
+"as5047p\stm32f1xx_hal_cortex.o"
+"as5047p\stm32f1xx_hal_pwr.o"
+"as5047p\stm32f1xx_hal_flash.o"
+"as5047p\stm32f1xx_hal_flash_ex.o"
+"as5047p\system_stm32f1xx.o"
+--library_type=microlib --strict --scatter "AS5047P\AS5047P.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "AS5047P.map" -o AS5047P\AS5047P.axf
