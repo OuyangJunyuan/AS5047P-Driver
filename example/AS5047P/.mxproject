@@ -1,7 +1,7 @@
 [PreviousGenFiles]
-HeaderPath=C:/Users/70654/Desktop/AS5047P-Driver/example/AS5047P/Inc
+HeaderPath=D:/GitWS/git-repository/ee/IC-driver/AS5047P-Driver/example/AS5047P/Inc
 HeaderFiles=gpio.h;spi.h;stm32f1xx_it.h;stm32f1xx_hal_conf.h;main.h;usart.h;
-SourcePath=C:/Users/70654/Desktop/AS5047P-Driver/example/AS5047P/Src
+SourcePath=D:/GitWS/git-repository/ee/IC-driver/AS5047P-Driver/example/AS5047P/Src
 SourceFiles=gpio.c;spi.c;stm32f1xx_it.c;stm32f1xx_hal_msp.c;main.c;usart.c;
 
 [PreviousLibFiles]
