@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "spi.h"
+#include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -57,8 +58,9 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-	float Angle=0;
-	int time=0;
+uint16_t angle[2];
+uint8_t buf[6];
+int time=0;
 /* USER CODE END 0 */
 
 /**
@@ -90,19 +92,31 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_SPI1_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 		
 	AS5047_Init();	
-	AS5047_SetZeroPosition();
-	AS5047_ReadData(ANGLECOM_AS5047P_VOL_REG_ADD);
+//	AS5047_SetZeroPosition();
+//	AS5047_ReadData(ANGLECOM_AS5047P_VOL_REG_ADD);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		Angle= (AS5047_ReadSPI() * 360.0f / 16383.0f ) ;
+    angle[0]= AS5047_ReadData(0,ANGLEUNC_AS5047P_VOL_REG_ADD);//AS5047_ReadSPI(0);
+    angle[1]= AS5047_ReadData(1,ANGLECOM_AS5047P_VOL_REG_ADD);//AS5047_ReadSPI(1);
+    
+    buf[0]='a';  
+    buf[1]= angle[0];
+    buf[2]= angle[0]>>8;
+    buf[3]= angle[1];
+    buf[4]= angle[1]>>8;
+    buf[5]='g';
 		++time;
+    HAL_Delay(1);
+    HAL_UART_Transmit(&huart1,buf,sizeof(buf),100);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

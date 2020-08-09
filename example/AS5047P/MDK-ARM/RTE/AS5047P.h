@@ -19,7 +19,7 @@ typedef struct
 	GPIO_TypeDef *CSNport;
 	uint16_t CSNpin;
 }AS5047_TypeDef;
-extern AS5047_TypeDef  has5047;
+
 
 
 
@@ -62,9 +62,6 @@ extern AS5047_TypeDef  has5047;
 
 
 //------------------------------------------------
-#define SPI_CSN_1  HAL_GPIO_WritePin(has5047.CSNport,has5047.CSNpin,GPIO_PIN_SET)
-#define SPI_CSN_0  HAL_GPIO_WritePin(has5047.CSNport,has5047.CSNpin,GPIO_PIN_RESET)
-
 
 
 
@@ -72,13 +69,11 @@ extern AS5047_TypeDef  has5047;
 
 
 void AS5047_Init(void);
-void AS5047_SetZeroPosition(void);
-uint16_t AS5047_Get_ZeroPosition(void);
-uint16_t AS5047_Get_ERRFL(void);
-uint16_t AS5047_WriteData(uint16_t addr,uint16_t data);
-uint16_t AS5047_ReadData(uint16_t addr);
-uint16_t AS5047_ReadSPI(void);
-
+void AS5047_SetZeroPosition(int devidx);
+uint16_t AS5047_Get_ZeroPosition(int devidx);
+uint16_t AS5047_Get_ERRFL(int devidx);
+uint16_t AS5047_WriteData(int devidx,uint16_t addr,uint16_t data);
+uint16_t AS5047_ReadData(int devidx,uint16_t addr);
 
 #endif
 
